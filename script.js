@@ -168,6 +168,9 @@ lioption4.addEventListener("click",function(event) {
         if (element.innerHTML!==activeQuestion.correct){
             timeLeft=timeLeft-10;
         };
+        if (usedQuestionsArray.length === 10){
+            return;
+        }
         getandLogRandomQuestion();
         loadQuestion();
     }
