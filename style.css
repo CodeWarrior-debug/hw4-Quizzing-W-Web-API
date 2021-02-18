@@ -1,0 +1,45 @@
+h1{
+    display: flex;
+    justify-content: center;
+}
+
+article{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+section.edge-rail{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 15%;
+}
+
+section.Pre-Game{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: nowrap;
+    justify-content: center;
+    width: 70%;
+}
+
+.Pre-Game article{
+    height: 40vh;
+
+}
+
+button{
+    align-items: center;
+}
+
+section.Pre-Game{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: nowrap;
+    justify-content: center;
+    width: 70%;
+}
