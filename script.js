@@ -1,5 +1,35 @@
+var questionsArray=[];
+var activeQuestion;
+var usedQuestionsArray=[];
+var timeLeft;
+var score;
 
 
+
+//on window load, hide ingame view, set button to start game
+
+window.onload=chgShowID("in-game");
+window.onload=chgShowID("question-list");
+
+
+
+
+function chgShowID(idName){
+    var activeElement = document.getElementById(idName);
+    if (activeElement.style.display="none"){
+        activeElement.style.display="initial"
+    } else {activeElement.style.display="none"}
+}
+
+
+q1={
+    question: "What is the first animal mentioned in the subtext of the opening credits?",
+    option1: "Moose",
+    option2: "Rabbit",
+    option3: "Horse",
+    option4: "Llama",
+    correct: "Moose"
+    }
 
 
 
