@@ -1,4 +1,3 @@
-var questionsArray = ['q1','q2','q3','q4','q5','q6','q7','q8','q9','q10'];
 var activeQuestion;
 var usedQuestionsArray=[];
 var timeLeft=60;
@@ -10,21 +9,38 @@ var lioption1=document.getElementById("1");
 var lioption2=document.getElementById("2");
 var lioption3=document.getElementById("3");
 var lioption4=document.getElementById("4");
+var element;
 
 //on window load, hide ingame view, set button to start game
 
 window.onload=hideID("in-game");
-startBtn.addEventListener("click",startGame())
+startBtn.addEventListener("click",startGame);
+
+lioption1.addEventListener("click",function(event) {
+element = event.target;
+submitAnswer(element)});
+
+lioption2.addEventListener("click",function(event) {
+element=event.target;   
+submitAnswer(element)});
+
+lioption3.addEventListener("click",function(event) {
+element=event.target;   
+submitAnswer(element)});
+
+lioption4.addEventListener("click",function(event) {
+    element=event.target;   
+    submitAnswer(element)});
 
 //establish question set
 
-q1={
+    q1={
     question: "What is the first animal mentioned in the subtext of the opening credits?",
     option1: "Moose",
     option2: "Rabbit",
     option3: "Horse",
     option4: "Llama",
-    correct: "Moose"
+    correct: "Moose",
     }
     
     q2={
@@ -33,7 +49,7 @@ q1={
     option2: "Insufficient airspeed velocity",
     option3: "Non-migratory bird",
     option4: "Hates coconuts",
-    correct: "Non-migratory bird"
+    correct: "Non-migratory bird",
     }
     
     q3={
@@ -42,7 +58,7 @@ q1={
     option2: "One Shillling",
     option3: "Ninepence",
     option4: "One Crown",
-    correct: "Ninepence"
+    correct: "Ninepence",
     }
         
     q4={
@@ -51,7 +67,7 @@ q1={
     option2: "Left arm",
     option3: "Left leg",
     option4: "Right leg",
-    correct: "Left arm"  
+    correct: "Left arm",  
     }
     
     q5={
@@ -60,7 +76,7 @@ q1={
     option2: "It got better",
     option3: "He was eaten by a duck",
     option4: "He crawled away",
-    correct: "It got better"  
+    correct: "It got better",  
     }
     
     q6={
@@ -69,7 +85,7 @@ q1={
     option2: "Robin",
     option3: "Bedevere",
     option4: "Lancelot",
-    correct: "Bedevere"  
+    correct: "Bedevere",  
     }
     
     q7={
@@ -78,7 +94,7 @@ q1={
     option2: "I have to push the pram a lot",
     option3: "We sing from the diaphragm a lot",
     option4: "It's a busy life in Camelot",
-    correct: "I have to push the pram a lot"  
+    correct: "I have to push the pram a lot",  
     }
     
     q8={
@@ -87,7 +103,7 @@ q1={
     option2: "Badger",
     option3: "Horse",
     option4: "Porcupine",
-    correct: "Badger"  
+    correct: "Badger",  
     }
     
     q9={
@@ -96,7 +112,7 @@ q1={
     option2: "A London Bobby",
     option3: "An American journalist",
     option4: "A Cambridge professor",
-    correct: "A famous historian"  
+    correct: "A famous historian",  
     }
     
     q10={
@@ -105,12 +121,13 @@ q1={
     option2: "Sir Galahad",
     option3: "Sir Lancelot",
     option4: "Sir Robin",
-    correct: "Sir Robin"  
+    correct: "Sir Robin",  
     }
 
+    var questionsArray = [q1,q2,q3,q4,q5,q6,q7,q8,q9,q10];
 //establish reusable functions
 
-    function hideID(idName){
+    function hideID(idName) {
         var activeElement = document.getElementById(idName);
         {activeElement.style.display="none"}
     }
@@ -121,7 +138,7 @@ q1={
     }
 
     function getandLogRandomQuestion(){       //picks random question, tests if it's already been used...yes, it restarts...no, it accepts and logs acceptance in used Array
-        activeQuestion=questionsArray[Math.floor(math.random()*questionsArray.length)];
+        activeQuestion=questionsArray[Math.floor(Math.random()*questionsArray.length)];
         if (usedQuestionsArray.includes(activeQuestion)) {
             getandLogRandomQuestion();
         }
@@ -132,31 +149,41 @@ q1={
     function startGame(){
         hideID("pre-game");
         showID("in-game");
+        showID("timer");
+        showID("question");
+        showID("question-list");
         getandLogRandomQuestion();
-        loadQuestion(activeQuestion);
+        loadQuestion();
     }
 
-    function loadQuestion(whatQuestion){
-        questionText=activeQuestion.question;
+    function loadQuestion(){
+        questionText.innerHTML=activeQuestion.question;
         lioption1.innerHTML=activeQuestion.option1;
         lioption2.innerHTML=activeQuestion.option2;
         lioption3.innerHTML=activeQuestion.option3;
         lioption4.innerHTML=activeQuestion.option4;
     }
 
-    window.onload = function () {
-        var timeLeft = 60,
-        display = document.querySelector('#time');
-        startTimer(oneMinute, display);
-    };
+    function submitAnswer(element){
+        if (element.innerHTML!==activeQuestion.correct){
+            timeLeft=timeLeft-10;
+        };
+        getandLogRandomQuestion();
+        loadQuestion();
+    }
+    // window.onload = function () {
+    //     var timeLeft = 60,
+    //     display = document.querySelector('#time');
+    //     startTimer(oneMinute, display);
+    // };
 
 //Thanks to Stack Overflow Question# 20618355
 
-window.onload = function () {
-    var oneMinute = 60,
-        display = document.querySelector('#timer');
-    startTimer(oneMinute, display);
-};
+// window.onload = function () {
+//     var oneMinute = 60,
+//         display = document.querySelector('#timer');
+//     startTimer(oneMinute, display);
+// };
 
 // //Thanks to Stack Overflow Question# 20618355
 // function startTimer(duration) {
