@@ -1,6 +1,6 @@
 https://www.sporcle.com/games/biggs364/monty-pythons-holy-grail-multiple-choice
 
-q1{
+q1={
 question: "What is the first animal mentioned in the subtext of the opening credits?",
 option1: "Moose",
 option2: "Rabbit",
@@ -9,7 +9,7 @@ option4: "Llama",
 correct: "Moose"
 }
 
-q2{
+q2={
 question: "Why could the coconut not be brought to Britain by an African swallow?",
 option1: "Unable to grasp it by the husk",
 option2: "Insufficient airspeed velocity",
@@ -18,7 +18,7 @@ option4: "Hates coconuts",
 correct: "Non-migratory bird"
 }
 
-q3{
+q3={
 question: "What was the fee for taking away a dead body on the cart?",
 option1: "Sixpence",
 option2: "One Shillling",
@@ -28,7 +28,7 @@ correct: "Ninepence"
 }
 
 
-q4{
+q4={
 question: "What was the first limb of the Black Knight removed by King Arthur?",
 option1: "Right arm",
 option2: "Left arm",
@@ -38,7 +38,7 @@ correct: "Left arm"
 }
 
  
-q5{
+q5={
 question: "What was the fate of the newt?",
 option1: "He turned into a knight",
 option2: "It got better",
@@ -47,7 +47,7 @@ option4: "He crawled away",
 correct: "It got better"  
 }
 
-q6{
+q6={
 question: "Who was the first knight King Arthur added to his round table?",
 option1: "Galahad",
 option2: "Robin",
@@ -56,7 +56,7 @@ option4: "Lancelot",
 correct: "Bedevere"  
 }
 
-q7{
+q7={
 question: "What is the last line of the Camelot song?",
 option1: "We eat ham and jam and spam a lot",
 option2: "I have to push the pram a lot",
@@ -65,7 +65,7 @@ option4: "It's a busy life in Camelot",
 correct: "I have to push the pram a lot"  
 }
 
-q8{
+q8={
 question: "After the Trojan Rabbit failure, what alternate Trojan animal did Sir Bedevere propose trying?",
 option1: "Duck",
 option2: "Badger",
@@ -74,7 +74,7 @@ option4: "Porcupine",
 correct: "Badger"  
 }
 
-q9{
+q9={
 question: "What modern day character was slain by an armored horseman?",
 option1: "A famous historian",
 option2: "A London Bobby",
@@ -83,7 +83,7 @@ option4: "A Cambridge professor",
 correct: "A famous historian"  
 }
 
-q10{
+q10={
 question: "Which of King Arthur's knights meets the three-headed knight?",
 option1: "Sir Bedemere",
 option2: "Sir Galahad",
@@ -92,7 +92,7 @@ option4: "Sir Robin",
 correct: "Sir Robin"  
 }
 
-q11{
+q11={
 question: "",
 option1: "",
 option2: "",
@@ -101,7 +101,7 @@ option4: "",
 correct: ""  
 }
 
-q12{
+q12={
 question: "",
 option1: "",
 option2: "",
@@ -110,7 +110,7 @@ option4: "",
 correct: ""  
 }
 
-q13{
+q13={
 question: "",
 option1: "",
 option2: "",
@@ -119,7 +119,7 @@ option4: "",
 correct: ""  
 }
 
-q4{
+q4={
 question: "",
 option1: "",
 option2: "",
@@ -128,7 +128,7 @@ option4: "",
 correct: ""  
 }
 
-q4{
+q4={
 question: "",
 option1: "",
 option2: "",
@@ -137,7 +137,7 @@ option4: "",
 correct: ""  
 }
 
-q4{
+q4={
 question: "",
 option1: "",
 option2: "",
@@ -146,7 +146,7 @@ option4: "",
 correct: ""  
 }
 
-q4{
+q4={
 question: "",
 option1: "",
 option2: "",
@@ -155,7 +155,7 @@ option4: "",
 correct: ""  
 }
 
-q4{
+q4={
 question: "",
 option1: "",
 option2: "",
@@ -164,7 +164,7 @@ option4: "",
 correct: ""  
 }
 
-q4{
+q4={
 question: "",
 option1: "",
 option2: "",
