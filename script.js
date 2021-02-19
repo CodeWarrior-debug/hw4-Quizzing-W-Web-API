@@ -204,19 +204,7 @@ lioption4.addEventListener("click",function(event) {
                 timer.textContent = "Time: " + timeLeft;
                 timeLeft=timeLeft-1;
             } else timer.textContent= "GAME OVER";
+            window.location=""
         }, 1000);
     }
 
-    // window.onload = function () {
-    //     var timeLeft = 60,
-    //     display = document.querySelector('#time');
-    //     startTimer(oneMinute, display);
-    // };
-
-//Thanks to Stack Overflow Question# 20618355
-
-// window.onload = function () {
-//     var oneMinute = 60,
-//         display = document.querySelector('#timer');
-//     startTimer(oneMinute, display);
-// };
