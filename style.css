@@ -3,8 +3,6 @@ h1{
     justify-content: center;
 }
 
-
-
 article{
     display: flex;
     flex-direction: row;
@@ -30,7 +28,6 @@ section.Pre-Game{
 
 .Pre-Game article{
     height: 40vh;
-    
 }
 
 article div{
@@ -51,4 +48,13 @@ section.Pre-Game{
 
 time{
     display: block;
+    width: 100%;
+}
+
+ul li{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    min-width: 20vw;
+    flex-wrap: nowrap;
 }

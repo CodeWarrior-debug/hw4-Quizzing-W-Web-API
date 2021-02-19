@@ -126,6 +126,7 @@ lioption4.addEventListener("click",function(event) {
     }
 
     var questionsArray = [q1,q2,q3,q4,q5,q6,q7,q8,q9,q10];
+
 //establish reusable functions
 
     function hideID(idName) {
@@ -138,11 +139,13 @@ lioption4.addEventListener("click",function(event) {
         {activeElement.style.display="initial"}
     }
 
-    function getandLogQuestion(){       //picks random question, tests if it's already been used...yes, it restarts...no, it accepts and logs acceptance in used Array
+    function getandLogQuestion(){       //picks question, 
         activeQuestion=questionsArray[x];
         x++;
         if (x === 11) {
-            return "alldone";
+            const finalScore=timeLeft;
+            window.location="https://codewarrior-debug.github.io/hw4-Quizzing-W-Web-API/game-over";
+            return 
         }
         // usedQuestionsArray.push(activeQuestion);
     }
@@ -170,30 +173,42 @@ lioption4.addEventListener("click",function(event) {
     function submitAnswer(element){
 
         if (element.innerHTML!==activeQuestion.correct){
-            timeLeft=timeLeft-10;
+            timeLeft=timeLeft-5;
         };
 
         if (x===11){
-            return;
+        const finalScore=timeLeft;
+        window.location="https://codewarrior-debug.github.io/hw4-Quizzing-W-Web-API/game-over";
+        return
         }
         
+        if (timeLeft <=0){
+        const finalScore=timeLeft;
+        window.location="https://codewarrior-debug.github.io/hw4-Quizzing-W-Web-API/game-over";
+        return   
+        }
+
         getandLogQuestion();
         loadQuestion();
     }
 
-    function submitAnswer(element){
+    // function submitAnswer(element){
 
-        if (element.innerHTML!==activeQuestion.correct){
-            timeLeft=timeLeft-10;
-        };
+    //     if (element.innerHTML!==activeQuestion.correct){
+    //         timeLeft=timeLeft-10;
+    //     };
 
-        if (x===11){
-            return;
-        }
+    //     if (x===11){
+    //         return;
+    //     }
         
-        getandLogQuestion();
-        loadQuestion();
-    }
+    //     if (timeLeft <=0){
+            
+    //     }
+
+    //     getandLogQuestion();
+    //     loadQuestion();
+    // }
 
     //Thanks to Stack Overflow Question# 20618355
     
@@ -204,7 +219,10 @@ lioption4.addEventListener("click",function(event) {
                 timer.textContent = "Time: " + timeLeft;
                 timeLeft=timeLeft-1;
             } else timer.textContent= "GAME OVER";
-            window.location=""
+            finalScore=timeLeft;
+            // Thanks to https://flaviocopes.com/how-to-redirect-using-javascript/
+            window.location="https://codewarrior-debug.github.io/hw4-Quizzing-W-Web-API/game-over";
+
         }, 1000);
     }
 
