@@ -11,6 +11,7 @@ var lioption3=document.getElementById("3");
 var lioption4=document.getElementById("4");
 var element;
 var x=0;
+var scoreNote=document.getElementById("your-score");
 var scoreTable=document.getElementById("score-table");
 var playerInitials=document.getElementById("initials");
 var submitBtn=document.getElementById("submit");
@@ -151,7 +152,6 @@ lioption4.addEventListener("click",function(event) {
             const finalScore=timeLeft;
             return 
         }
-        // usedQuestionsArray.push(activeQuestion);
     }
 
 // set start game function
@@ -182,11 +182,13 @@ lioption4.addEventListener("click",function(event) {
 
         if (x===11){
         const finalScore=timeLeft;
+        finishGame();
         return
         }
         
         if (timeLeft <=0){
         const finalScore=timeLeft;
+        finishGame();
         return   
         }
 
@@ -203,9 +205,17 @@ lioption4.addEventListener("click",function(event) {
                 timer.textContent = "Time: " + timeLeft;
                 timeLeft=timeLeft-1;
             } else {timer.textContent= "GAME OVER";
-            const finalScore=timeLeft;            
+            const finalScore=timeLeft;
+            finishGame();            
         }
         }, 1000);
+    }
+
+    function finishGame(){
+        hideID("in-game");
+        showID("game-over");
+        scoreNote.textContent=finalScore;
+          
     }
 
     function recordScores(){
@@ -213,5 +223,4 @@ lioption4.addEventListener("click",function(event) {
             initials: playerInitials.textContent,
             score: finalScore,
         }
-
     }

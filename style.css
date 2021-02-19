@@ -51,7 +51,14 @@ ul li{
     background-color: purple;
     color: seashell;
     text-emphasis: 1.2;
+    border-radius: 8%;
+    margin: 5%;
 }
+
+ul li:hover{
+    opacity: 50%;
+}
+
 
 section.game-over{
     display: flex;
