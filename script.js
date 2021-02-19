@@ -11,11 +11,16 @@ var lioption3=document.getElementById("3");
 var lioption4=document.getElementById("4");
 var element;
 var x=0;
+var scoreTable=document.getElementById("score-table");
+var playerInitials=document.getElementById("initials");
+var submitBtn=document.getElementById("submit");
 
 //on window load, hide ingame view, set button to start game
 
 window.onload=hideID("in-game");
+window.onload=hideID("game-over");
 startBtn.addEventListener("click",startGame);
+submitBtn.addEventListener("click",recordScores);
 
 lioption1.addEventListener("click",function(event) {
 element = event.target;
@@ -144,7 +149,6 @@ lioption4.addEventListener("click",function(event) {
         x++;
         if (x === 11) {
             const finalScore=timeLeft;
-            window.location="https://codewarrior-debug.github.io/hw4-Quizzing-W-Web-API/game-over";
             return 
         }
         // usedQuestionsArray.push(activeQuestion);
@@ -178,37 +182,17 @@ lioption4.addEventListener("click",function(event) {
 
         if (x===11){
         const finalScore=timeLeft;
-        window.location="https://codewarrior-debug.github.io/hw4-Quizzing-W-Web-API/game-over";
         return
         }
         
         if (timeLeft <=0){
         const finalScore=timeLeft;
-        window.location="https://codewarrior-debug.github.io/hw4-Quizzing-W-Web-API/game-over";
         return   
         }
 
         getandLogQuestion();
         loadQuestion();
     }
-
-    // function submitAnswer(element){
-
-    //     if (element.innerHTML!==activeQuestion.correct){
-    //         timeLeft=timeLeft-10;
-    //     };
-
-    //     if (x===11){
-    //         return;
-    //     }
-        
-    //     if (timeLeft <=0){
-            
-    //     }
-
-    //     getandLogQuestion();
-    //     loadQuestion();
-    // }
 
     //Thanks to Stack Overflow Question# 20618355
     
@@ -218,11 +202,16 @@ lioption4.addEventListener("click",function(event) {
             if(timeLeft > 0){
                 timer.textContent = "Time: " + timeLeft;
                 timeLeft=timeLeft-1;
-            } else timer.textContent= "GAME OVER";
-            finalScore=timeLeft;
-            // Thanks to https://flaviocopes.com/how-to-redirect-using-javascript/
-            window.location="https://codewarrior-debug.github.io/hw4-Quizzing-W-Web-API/game-over";
-
+            } else {timer.textContent= "GAME OVER";
+            const finalScore=timeLeft;            
+        }
         }, 1000);
     }
 
+    function recordScores(){
+        var scoreRecent = {
+            initials: playerInitials.textContent,
+            score: finalScore,
+        }
+
+    }
