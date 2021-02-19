@@ -37,15 +37,6 @@ article div{
     max-width: 10vw;
 }
 
-section.Pre-Game{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex-wrap: nowrap;
-    justify-content: center;
-    width: 70%;
-}
-
 time{
     display: block;
     width: 100%;
@@ -57,4 +48,16 @@ ul li{
     justify-content: flex-start;
     min-width: 20vw;
     flex-wrap: nowrap;
+    background-color: purple;
+    color: seashell;
+    text-emphasis: 1.2;
+}
+
+section.game-over{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: nowrap;
+    justify-content: center;
+    width: 70%;
 }
