@@ -3,6 +3,8 @@ h1{
     justify-content: center;
 }
 
+
+
 article{
     display: flex;
     flex-direction: row;
@@ -45,4 +47,8 @@ section.Pre-Game{
     flex-wrap: nowrap;
     justify-content: center;
     width: 70%;
+}
+
+time{
+    display: block;
 }

@@ -10,6 +10,7 @@ var lioption2=document.getElementById("2");
 var lioption3=document.getElementById("3");
 var lioption4=document.getElementById("4");
 var element;
+var x=0;
 
 //on window load, hide ingame view, set button to start game
 
@@ -137,12 +138,13 @@ lioption4.addEventListener("click",function(event) {
         {activeElement.style.display="initial"}
     }
 
-    function getandLogRandomQuestion(){       //picks random question, tests if it's already been used...yes, it restarts...no, it accepts and logs acceptance in used Array
-        activeQuestion=questionsArray[Math.floor(Math.random()*questionsArray.length)];
-        if (usedQuestionsArray.includes(activeQuestion)) {
-            getandLogRandomQuestion();
+    function getandLogQuestion(){       //picks random question, tests if it's already been used...yes, it restarts...no, it accepts and logs acceptance in used Array
+        activeQuestion=questionsArray[x];
+        x++;
+        if (x === 11) {
+            return "alldone";
         }
-        usedQuestionsArray.push(activeQuestion);
+        // usedQuestionsArray.push(activeQuestion);
     }
 
 // set start game function
@@ -152,7 +154,8 @@ lioption4.addEventListener("click",function(event) {
         showID("timer");
         showID("question");
         showID("question-list");
-        getandLogRandomQuestion();
+        startTimer();
+        getandLogQuestion();
         loadQuestion();
     }
 
@@ -165,15 +168,45 @@ lioption4.addEventListener("click",function(event) {
     }
 
     function submitAnswer(element){
+
         if (element.innerHTML!==activeQuestion.correct){
             timeLeft=timeLeft-10;
         };
-        if (usedQuestionsArray.length === 10){
+
+        if (x===11){
             return;
         }
-        getandLogRandomQuestion();
+        
+        getandLogQuestion();
         loadQuestion();
     }
+
+    function submitAnswer(element){
+
+        if (element.innerHTML!==activeQuestion.correct){
+            timeLeft=timeLeft-10;
+        };
+
+        if (x===11){
+            return;
+        }
+        
+        getandLogQuestion();
+        loadQuestion();
+    }
+
+    //Thanks to Stack Overflow Question# 20618355
+    
+    function startTimer(){
+        var timer = document.getElementById("timer");
+        setInterval(function() {
+            if(timeLeft > 0){
+                timer.textContent = "Time: " + timeLeft;
+                timeLeft=timeLeft-1;
+            } else timer.textContent= "GAME OVER";
+        }, 1000);
+    }
+
     // window.onload = function () {
     //     var timeLeft = 60,
     //     display = document.querySelector('#time');
@@ -187,14 +220,3 @@ lioption4.addEventListener("click",function(event) {
 //         display = document.querySelector('#timer');
 //     startTimer(oneMinute, display);
 // };
-
-// //Thanks to Stack Overflow Question# 20618355
-// function startTimer(duration) {
-//     var timer = document.getElementById("timer");
-//     setInterval(function() {
-//         if(time >= 0){
-//             timer.textContent = "Time: " + time;
-//             time--;
-//         }
-//     }, 1000);
-// }
