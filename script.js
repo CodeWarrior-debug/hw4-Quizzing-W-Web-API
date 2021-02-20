@@ -18,6 +18,7 @@ var submitBtn=document.getElementById("submit");
 var gameStatus='';
 var scoreRecent;
 var timer = document.getElementById("timer");
+var timer_is_on = 0;
 
 //on window load, hide ingame view, set button to start game
 
@@ -186,13 +187,11 @@ lioption4.addEventListener("click",function(event) {
 
         if (x===11){
         finalScore=timeLeft;
-        stopCount();
         finishGame();
         }
         
         if (timeLeft <=0){
         finalScore=timeLeft;
-        stopCount();
         finishGame();
         }
 
@@ -200,28 +199,13 @@ lioption4.addEventListener("click",function(event) {
         if (gameStatus!=="finished") loadQuestion();
     }
 
-    //Thanks to Stack Overflow Question# 20618355
-    
-    // function startTimer(timeAmt){
-        
-    //     setInterval(function() {
-    //         if(timeLeft > 0){
-    //             timer.textContent = "Time: " + timeLeft;
-    //             timeLeft=timeLeft-1;
-    //         } else {timer.textContent= "GAME OVER";
-    //         finalScore=timeLeft;
-    //         finishGame();            
-    //     }
-    //     }, 1000);
-    // }
-
-   // <button onclick="myFunction()">Try it</button>
-   // <button onclick="myStopFunction()">Stop the alert</button>
+    //Thanks to w3 schools for timer using timedCount
    
    function startCount(numberSeconds) {
     if (!timer_is_on) {
       timeLeft = numberSeconds;
       timedCount();
+      timer_is_on = 1;
     }
   }
    
@@ -232,34 +216,27 @@ lioption4.addEventListener("click",function(event) {
     if(timeLeft<=0){stopCount()};
   }
     
-  function stopCount() {
-    clearTimeout(t);
-    timer_is_on = 0;
-  }
-
-    //if (gameStatus==="finished"){clearInterval(startTimer)};
-    // finalScore=Math.max(timeLeft,0);
-    // if (gameStatus !=="finished") finishGame();  
+    function stopCount() {
+        clearTimeout(t);
+        timer_is_on = 0;
+    }
 
     function finishGame(){
+        stopCount();
         hideID("in-game");
         showID("game-over");
+        finalScore=Math.max(timeLeft,0);
         scoreNote.textContent=finalScore;
         gameStatus="finished";
     }
 
     function recordScores(){
-        ("score"+(date).toString) = {
+        var myscore = {
             initials: playerInitials.value,
             score: finalScore,
         }
-
-        oldArray=JSON.parse(localStorage.getItem("scoreRecent"));
-        scoreArrayRecent=oldArray.push(("score"+(date).toString));
-
-
-        saveScores();
     }
+   
 
     function saveScores() {
         var savedScores = JSON.parse(localStorage.getItem("scoreRecent")); //|| [];
@@ -268,11 +245,14 @@ lioption4.addEventListener("click",function(event) {
         addRow();
     }
 
-    // function to add new row.
-    function addRow() {
-        var scoreTable = document.getElementById('score-table');
-        var rowCnt = scoreTable.rows.length;    // get the number of rows.
-        var tr = scoreTable.insertRow(rowCnt); // table row.
-    }
+    //     oldArray=JSON.parse(localStorage.getItem("scoreRecent"));
+    //     scoreArrayRecent=oldArray.push(("score"+(date).toString));
+    //     saveScores();
+    // }
 
-
+    // // function to add new row.
+    // function addRow() {
+    //     var scoreTable = document.getElementById('score-table');
+    //     var rowCnt = scoreTable.rows.length;    // get the number of rows.
+    //     var tr = scoreTable.insertRow(rowCnt); // table row.
+    // }
