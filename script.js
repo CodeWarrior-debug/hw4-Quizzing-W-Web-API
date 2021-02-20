@@ -15,6 +15,7 @@ var scoreNote=document.getElementById("your-score");
 var scoreTable=document.getElementById("score-table");
 var playerInitials=document.getElementById("initials");
 var submitBtn=document.getElementById("submit");
+var gameStatus='';
 
 //on window load, hide ingame view, set button to start game
 
@@ -149,8 +150,8 @@ lioption4.addEventListener("click",function(event) {
         activeQuestion=questionsArray[x];
         x++;
         if (x === 11) {
-            const finalScore=timeLeft;
-            return 
+            finalScore=timeLeft;
+            finishGame();
         }
     }
 
@@ -161,7 +162,8 @@ lioption4.addEventListener("click",function(event) {
         showID("timer");
         showID("question");
         showID("question-list");
-        startTimer();
+        timeLeft=60;
+        startTimer(timeLeft);
         getandLogQuestion();
         loadQuestion();
     }
@@ -181,46 +183,88 @@ lioption4.addEventListener("click",function(event) {
         };
 
         if (x===11){
-        const finalScore=timeLeft;
+        finalScore=timeLeft;
         finishGame();
-        return
         }
         
         if (timeLeft <=0){
-        const finalScore=timeLeft;
+        finalScore=timeLeft;
         finishGame();
-        return   
         }
 
         getandLogQuestion();
-        loadQuestion();
+        if (gameStatus!=="finished") loadQuestion();
     }
 
     //Thanks to Stack Overflow Question# 20618355
     
-    function startTimer(){
+    function startTimer(timeAmt){
         var timer = document.getElementById("timer");
         setInterval(function() {
             if(timeLeft > 0){
                 timer.textContent = "Time: " + timeLeft;
                 timeLeft=timeLeft-1;
             } else {timer.textContent= "GAME OVER";
-            const finalScore=timeLeft;
+            finalScore=timeLeft;
             finishGame();            
         }
         }, 1000);
     }
 
+    //if (gameStatus==="finished"){clearInterval(startTimer)};
+    // finalScore=Math.max(timeLeft,0);
+    // if (gameStatus !=="finished") finishGame();  
+
     function finishGame(){
         hideID("in-game");
         showID("game-over");
         scoreNote.textContent=finalScore;
-          
+        gameStatus="finished";
     }
 
     function recordScores(){
         var scoreRecent = {
-            initials: playerInitials.textContent,
+            initials: playerInitials.value,
             score: finalScore,
         }
+
+        var savedScores = JSON.parse(localStorage.getItem("scoreRecent")) || [];
+        savedScores.push(scoreRecent)
+        localStorage.setItem("scoreRecent", JSON.stringify(savedScores));
     }
+
+
+
+// first create a TABLE structure by adding few headers.
+    // function reason(){
+    //     var dropd = document.getElementById("savedrop").value;
+    //     var drophistory = JSON.parse(localStorage.getItem("reason")) || [];
+    //     drophistory.push(dropd);
+    //     localStorage.setItem("reason", JSON.stringify(drophistory));
+    // }
+
+    //  // first create a TABLE structure by adding few headers.
+    //  function createTable() {
+    //     var empTable = document.createElement('table');
+    //     empTable.setAttribute('id', 'empTable');  // table id.
+
+    //     var tr = empTable.insertRow(-1);
+
+    //     for (var h = 0; h < arrHead.length; h++) {
+    //         var th = document.createElement('th'); // the header object.
+    //         th.innerHTML = arrHead[h];
+    //         tr.appendChild(th);
+    //     }
+
+    //     var div = document.getElementById('cont');
+    //     div.appendChild(empTable);    // add table to a container.
+    // }
+
+    // function to add new row.
+    function addRow() {
+        var scoreTable = document.getElementById('score-table');
+
+        var rowCnt = scoreTable.rows.length;    // get the number of rows.
+        var tr = scoreTable.insertRow(rowCnt); // table row.
+    }
+
