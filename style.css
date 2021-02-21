@@ -3,6 +3,16 @@ h1{
     justify-content: center;
 }
 
+h2{
+    margin-left: 20vw;
+    width: 100%;
+}
+
+.in-game h2{
+    margin-left: 5vw;
+    width: 100%;
+}
+
 article{
     display: flex;
     flex-direction: row;
@@ -17,16 +27,29 @@ section.edge-rail{
     width: 15%;
 }
 
-section.Pre-Game{
+section.pre-game{
     display: flex;
     flex-direction: column;
     align-content: center;
     flex-wrap: nowrap;
     justify-content: center;
-    width: 70%;
+    width: 100%;
 }
 
-.Pre-Game article{
+.pre-game article{
+    height: 40vh;
+}
+
+section.pre-game{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: nowrap;
+    justify-content: center;
+    width: 100%;
+}
+
+.pre-game article{
     height: 40vh;
 }
 
@@ -39,6 +62,10 @@ article div{
 
 time{
     display: block;
+    width: 100%;
+}
+
+ul{
     width: 100%;
 }
 
@@ -59,12 +86,15 @@ ul li:hover{
     opacity: 50%;
 }
 
-
 section.game-over{
     display: flex;
     flex-direction: column;
     align-content: center;
     flex-wrap: nowrap;
     justify-content: center;
-    width: 70%;
+    width: 100%;
+}
+
+th{
+    width: 25%;
 }

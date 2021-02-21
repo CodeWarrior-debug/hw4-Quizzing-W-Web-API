@@ -12,13 +12,17 @@ var lioption4=document.getElementById("4");
 var element;
 var x=0;
 var scoreNote=document.getElementById("your-score");
-var scoreTable=document.getElementById("score-table");
+var scoreList=document.getElementById("score-table");
 var playerInitials=document.getElementById("initials");
 var submitBtn=document.getElementById("submit");
+var replayBtn=document.getElementById("play-again");
 var gameStatus='';
 var scoreRecent;
 var timer = document.getElementById("timer");
 var timer_is_on = 0;
+var savedScores;
+var myscore;
+
 
 //on window load, hide ingame view, set button to start game
 
@@ -26,6 +30,8 @@ window.onload=hideID("in-game");
 window.onload=hideID("game-over");
 startBtn.addEventListener("click",startGame);
 submitBtn.addEventListener("click",recordScores);
+replayBtn.addEventListener("click",refreshPage);
+
 
 lioption1.addEventListener("click",function(event) {
 element = event.target;
@@ -152,7 +158,7 @@ lioption4.addEventListener("click",function(event) {
     function getandLogQuestion(){       //picks question, 
         activeQuestion=questionsArray[x];
         x++;
-        if (x === 11) {
+        if (x === (questionsArray.length + 1) ) {
             finalScore=timeLeft;
             finishGame();
         }
@@ -185,7 +191,7 @@ lioption4.addEventListener("click",function(event) {
             timeLeft=timeLeft-5;
         };
 
-        if (x===11){
+        if (x===(questionsArray.length + 1)){
         finalScore=timeLeft;
         finishGame();
         }
@@ -231,28 +237,41 @@ lioption4.addEventListener("click",function(event) {
     }
 
     function recordScores(){
-        var myscore = {
-            initials: playerInitials.value,
-            score: finalScore,
+        initials=playerInitials.value;
+        score=finalScore;
+        myscore = {
+            initials: [initials],
+            score: [score],
         }
+        saveScores();
     }
    
-
     function saveScores() {
-        var savedScores = JSON.parse(localStorage.getItem("scoreRecent")); //|| [];
-        savedScores.push(scoreRecent);
-        localStorage.setItem("scoreRecent", JSON.stringify(savedScores));
-        addRow();
+        savedScores = JSON.parse(localStorage.getItem("savedScores")) || [];
+        if (savedScores.length===0) {
+            localStorage.setItem("savedScores", JSON.stringify(myscore));
+        } else 
+        {
+            savedScores.initials.push(myscore.initials[0]);
+            savedScores.score.push(myscore.score[0]);
+            localStorage.setItem("savedScores", JSON.stringify(savedScores));
+        };
+        addLi();
     }
 
-    //     oldArray=JSON.parse(localStorage.getItem("scoreRecent"));
-    //     scoreArrayRecent=oldArray.push(("score"+(date).toString));
-    //     saveScores();
-    // }
+    // function to add new row.
+    function addLi() {
+        savedScores = JSON.parse(localStorage.getItem("savedScores"));
+        for (a=0; a < savedScores.initials.length; a++) {
+            myInitials=savedScores.initials[a];
+            myScore=savedScores.score[a];
+            liStamp=(myInitials + ": " + myScore)
+            var li = document.createElement('li');
+            li.appendChild(document.createTextNode(liStamp));
+            scoreList.appendChild(li);
+        }
+    }
 
-    // // function to add new row.
-    // function addRow() {
-    //     var scoreTable = document.getElementById('score-table');
-    //     var rowCnt = scoreTable.rows.length;    // get the number of rows.
-    //     var tr = scoreTable.insertRow(rowCnt); // table row.
-    // }
+    function refreshPage(){
+        location.reload();
+    }
