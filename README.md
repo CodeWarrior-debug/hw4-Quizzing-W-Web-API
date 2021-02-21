@@ -1,10 +1,10 @@
-![Logo](https://github.com/CodeWarrior-debug/hw3-parameter-password-generator-w-jscript/blob/main/Assets/Lock-Icon.png)
+![Logo](https://github.com/CodeWarrior-debug/hw4-Quizzing-W-Web-API/blob/main/Assets/images/2004_WC_HolyGrail-1024x576.jpg?raw=true)
 
 ## hw4-Quizzing-W-Web-API
 > This is a quiz for the greatest cinematic comedy of all time, Monty Python and the Holy Grail! My 4th UNCC web dev bootcamp assignment, it went decently. I missed a few days of class which interfered with my understanding of JSON, but this assignment helped me catch back up. In the process I used local storage to save previously entered values, fumbled around with using JSON, and learned that ul's are much easier than HTML tables to manipulate. Each assignment gets more meaningful and closer to an impressive website, and I have no complaints about this exercise. 
 
 ## Preview
-![Page Preview](https://github.com/CodeWarrior-debug/hw3-parameter-password-generator-w-jscript/blob/main/Assets/Password-Generator-Preview.png)
+![Page Preview](https://github.com/CodeWarrior-debug/hw4-Quizzing-W-Web-API/blob/main/Assets/images/preview%20pic.png?raw=true)
 
 ## Development Tasks Performed
 - Wrote approximately 275 lines of javascript code.
